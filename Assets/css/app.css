@@ -1,4 +1,3 @@
-
 button#login {
     background: linear-gradient(90deg, #007bff, #0056b3);
     border: none;
@@ -8,14 +7,37 @@ button#login {
     transition: background 0.3s ease;
 }
 
-
 button#login:hover {
     background: linear-gradient(90deg, #0056b3, #003580);
 }
 
 h3 {
     font-weight: 600;
-  
 }
 
+body{
+    background-color: rgb(13, 28, 51);
+}
 
+.card{
+    background-color: rgb(15, 13, 13);
+}
+
+header{
+    background-color: darkslategray;
+    border: 5px solid white;
+    border-radius: 100px;
+    padding: 35px;
+    text-align: center;
+    font-size: 200%;
+    margin-bottom: 100px;
+    margin-top: 10px;
+}
+
+footer{
+    text-align: center;
+    padding: 20px;
+    letter-spacing: 3px;
+    font-size: 100%;
+    margin-top: 100px;
+}
