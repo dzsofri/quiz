@@ -1,0 +1,21 @@
+
+button#login {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    transition: background 0.3s ease;
+}
+
+
+button#login:hover {
+    background: linear-gradient(90deg, #0056b3, #003580);
+}
+
+h3 {
+    font-weight: 600;
+  
+}
+
+
