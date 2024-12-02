@@ -153,3 +153,40 @@ footer{
     background-size: 16px;
     padding-right: 40px;
 }
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px); /* Fentről csúszik be */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Alaphelyzetben */
+    }
+}
+
+.question-appear {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Az input mező szélességének kitöltése */
+.form-floating .form-control {
+    width: 100%; /* biztosítja, hogy az input mező teljes szélességben kitöltse a rendelkezésre álló helyet */
+    padding: 0.5rem 1rem; /* kényelmesebb margó az input mező szélén */
+    text-align: center; /* A szöveg és a placeholder középre igazítása */
+}
+
+/* A placeholder szöveg középre igazítása */
+#newAnswer::placeholder {
+    text-align: center; /* Középre igazítja a placeholder szöveget */
+}
+
+/* A form-floating label pozicionálása a mező felett, nem középre */
+.form-floating label {
+    text-align: left; /* A label szövegét balra igazítja */
+    position: absolute;
+    top: 0.5rem; /* A label a mező felső részén helyezkedik el */
+    left: 1rem; /* Kis távolság a bal oldaltól */
+    font-size: 1rem; /* Módosíthatod a betűméretet, hogy jobban illeszkedjen */
+}
+
