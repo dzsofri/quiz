@@ -28,6 +28,18 @@ app.get('/game', (req, res)=>{
     session.room = req.params.room;
     res.render('game.ejs', {user:session.user, room:session.room});
 });
+app.get('/board', (req, res)=>{
+    // let { name, room } = req.body;
+    session.user = req.params.user;
+    session.room = req.params.room;
+    res.render('board.ejs', {user:session.user, room:session.room});
+});
+
+app.get('/win', (req, res)=>{
+    // let { name, room } = req.body;
+   
+    res.render('win.ejs', {user:session.user, room:session.room});
+});
 
 const server = http.createServer(app);
 const io = socketio(server);
