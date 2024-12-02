@@ -190,3 +190,20 @@ footer{
     font-size: 1rem; /* Módosíthatod a betűméretet, hogy jobban illeszkedjen */
 }
 
+/* Cím középre igazítása */
+h3 {
+    text-align: center; /* A cím középre igazítása */
+    color: #ffffff; /* Fehér szín a jobb láthatóság érdekében */
+}
+
+/* Az input mező paddingjának növelése a szöveg és az input szélén */
+.form-floating .form-control {
+    width: 100%;
+    padding: 0.75rem 1.25rem; /* Több padding, hogy a szöveg ne érjen a széléhez */
+    text-align: center; /* Középre igazítja a szöveget és a placeholder-t */
+}
+
+/* A placeholder szöveg középre igazítása */
+#newAnswer::placeholder {
+    text-align: center; /* Középre igazítja a placeholder szöveget */
+}
