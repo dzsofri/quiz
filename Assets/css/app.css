@@ -24,9 +24,6 @@ body{
 }
 
 header{
-    background-color: darkslategray;
-    border: 5px solid white;
-    border-radius: 100px;
     padding: 35px;
     text-align: center;
     font-size: 200%;
