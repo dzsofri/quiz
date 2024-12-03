@@ -38,27 +38,6 @@ body {
     }
 }
 
-/* CARD: Kiemelt, üveg hatású megjelenés */
-.card {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 40px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    margin: 0 auto;
-    max-width: 600px;
-    color: #ffffff;
-}
-
-header{
-    padding: 35px;
-    text-align: center;
-    font-size: 200%;
-    margin-bottom: 100px;
-    margin-top: 10px;
-}
 
 footer{
     text-align: center;
@@ -201,8 +180,8 @@ tr {
 
 /* From Uiverse.io by vinodjangid07 */ 
 .notificationCard {
-    width: 220px;
-    height: 280px;
+    width: 420px;
+    height: 480px;
     background: rgb(245, 245, 245);
     display: flex;
     flex-direction: column;
@@ -215,7 +194,7 @@ tr {
   }
   
   .bellIcon {
-    width: 50px;
+    width: 100px;
     margin: 20px 0px;
   }
   
@@ -226,16 +205,26 @@ tr {
   .notificationHeading {
     color: black;
     font-weight: 600;
-    font-size: 0.8em;
+    font-size: 2em;
   }
   
   .notificationPara {
     color: rgb(133, 133, 133);
-    font-size: 0.6em;
+    font-size: 1.0em;
     font-weight: 600;
     text-align: center;
   }
   
+/* Teljes oldal középre igazítása */
+.notificationWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* A teljes böngészőablak magassága */
+    
+    margin: 0; /* Alapértelmezett margó eltávolítása */
+  }
+
   .buttonContainer {
     display: flex;
     flex-direction: column;
@@ -243,32 +232,18 @@ tr {
   }
   
   .AllowBtn {
-    width: 120px;
-    height: 25px;
+    width: 140px;
+    height: 45px;
     background-color: rgb(168, 131, 255);
     color: white;
     border: none;
     border-radius: 20px;
-    font-size: 0.7em;
+    font-size:1em;
     font-weight: 600;
     cursor: pointer;
   }
   
-  .NotnowBtn {
-    width: 120px;
-    height: 25px;
-    color: rgb(168, 131, 255);
-    border: none;
-    background-color: transparent;
-    font-weight: 600;
-    font-size: 0.7em;
-    cursor: pointer;
-    border-radius: 20px;
-  }
-  
-  .NotnowBtn:hover {
-    background-color: rgb(239, 227, 255);
-  }
+
   
   .AllowBtn:hover {
     background-color: rgb(153, 110, 255);
