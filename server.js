@@ -35,11 +35,7 @@ app.get('/board', (req, res)=>{
     res.render('board.ejs', {user:session.user, room:session.room});
 });
 
-app.get('/win', (req, res)=>{
-    // let { name, room } = req.body;
-   
-    res.render('win.ejs', {user:session.user, room:session.room});
-});
+
 
 const server = http.createServer(app);
 const io = socketio(server);
