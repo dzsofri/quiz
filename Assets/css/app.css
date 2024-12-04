@@ -199,7 +199,7 @@ tr {
   }
   
   .bellIcon path {
-    fill: rgb(168, 131, 255);
+    fill: #5c5be5;
   }
   
   .notificationHeading {
@@ -225,6 +225,22 @@ tr {
     margin: 0; /* Alapértelmezett margó eltávolítása */
   }
 
+  .question-appear {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
   .buttonContainer {
     display: flex;
     flex-direction: column;
@@ -234,7 +250,7 @@ tr {
   .AllowBtn {
     width: 140px;
     height: 45px;
-    background-color: rgb(168, 131, 255);
+    background: #5c5be5;
     color: white;
     border: none;
     border-radius: 20px;
@@ -246,7 +262,7 @@ tr {
 
   
   .AllowBtn:hover {
-    background-color: rgb(153, 110, 255);
+    background: #3d3d99;
   }
   
 
