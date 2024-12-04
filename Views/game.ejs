@@ -1,21 +1,13 @@
 <%- include('header') %>
 
 <div class="card">
-    <h3>Üdvözlünk a kvízben, <%- user %>!</h3>
+    <h3>Üdvözlünk a kvízben, !</h3>
 
     <!-- Kérdés megjelenítése -->
     <div class="mt-4">
         <h4 id="question" class="p-4 rounded" style="background: rgba(255, 255, 255, 0.1); color: #ffffff;">
             A kérdés szövege itt fog megjelenni...
         </h4>
-    </div>
-    
-
-    <!-- Válaszlehetőségek -->
-    <div class="mt-4">
-        <ul id="answersList" class="list-group" style="background: rgba(255, 255, 255, 0.1); border-radius: 8px;">
-            <!-- Dinamikusan feltöltött válaszlehetőségek -->
-        </ul>
     </div>
 
     <!-- Új válasz beküldése -->
@@ -26,32 +18,59 @@
         </div>
         <button class="btn" id="submitAnswerBtn" style="background: linear-gradient(90deg, #007bff, #0056b3); color: #ffffff;">Beküld</button>
     </div>
-    
+
     <div class="mt-4 text-center">
         <a href="/" class="btn btn-danger" id="exitQuizBtn" style="padding: 10px 20px; font-weight: bold;">Kilépés a kvízből</a>
     </div>
 </div>
 
+<script src="/socket.io/socket.io.js"></script>
+<script src="../../assets/moment.js"></script>
 <script>
+    const socket = io();
+    const newAnswerField = document.querySelector('#newAnswer');
+    const submitAnswerBtn = document.querySelector('#submitAnswerBtn');
+    const questionElement = document.querySelector('#question');
+
+    // Kérdés fogadása
+    socket.on('newQuestion', (questionText) => {
+        displayQuestion(questionText);
+    });
+
+    // Válasz beküldése
+    submitAnswerBtn.addEventListener('click', sendAnswer);
+    newAnswerField.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            sendAnswer();
+        }
+    });
+
+    function sendAnswer() {
+        const answer = newAnswerField.value.trim();
+        if (answer !== '') {
+            socket.emit('submitAnswer', answer);
+            newAnswerField.value = '';
+        } else {
+            alert('Kérlek, írj be egy választ!');
+        }
+    }
+
     function displayQuestion(questionText) {
-        const questionElement = document.getElementById('question');
         questionElement.textContent = questionText;
-
-        // Animáció osztály hozzáadása
         questionElement.classList.add('question-appear');
-
-        // Az animáció vége után eltávolítjuk az osztályt
         setTimeout(() => {
             questionElement.classList.remove('question-appear');
         }, 800);
     }
 
-    // Példa kérdés megjelenítése
-    displayQuestion('Mi a kedvenc színed?');
+    // Visszajelzés fogadása
+    socket.on('answerFeedback', (feedback) => {
+        alert(feedback);
+    });
 </script>
 
+
 <script src="/socket.io/socket.io.js"></script>
-<script src="../../assets/moment.js"></script>
-<script src="../../assets/quiz.js"></script>
+
 
 <%- include('footer') %>
