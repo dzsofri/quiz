@@ -39,40 +39,6 @@ app.get('/board', (req, res)=>{
 });
 
 
-io.on('connection', (socket)=>{
-    //console.log(socket.id)
-
-    socket.on('getRoomList', ()=>{
-        io.emit('updateRoomList', rooms)
-    });
-
-    socket.on('joinToChat', ()=>{
-        let user = userJoin(socket.id, session.user, session.room);
-        socket.join(session.room);
-        io.to(session.room).emit('updateRoomUsers', getRoomUsers(session.room));
-        io.to(session.room).emit('userConnected', user);
-        if(!inRoomsList(session.room)){
-            rooms.push(session.room);
-            io.emit('updateRoomList', rooms);
-        }
-    });
-
-    socket.on('leaveChat', ()=>{
-        let user = getCurrentUser(socket.id);
-        userLeave(socket.id);
-        io.to(user.room).emit('message', 'System', `${user.username} left the chat...`);
-        io.to(user.room).emit('updateRoomUsers', getRoomUsers(user.room));
-        if(getRoomUsers(user.room).length == 0){
-            roomLeave(user.room);
-            io.emit('updateRoomList', rooms);
-        }
-    });
-
-    socket.on('sendMsg', (msg)=>{
-        let user = getCurrentUser(socket.id);
-        io.to(user.room).emit('message', user, msg);
-    });
-});
 
 server.listen(port, ()=>{
     console.log(`Server listening on http://localhost:${port}`);
