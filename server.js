@@ -22,18 +22,21 @@ app.get('/', (req, res)=>{
 });
 
 
-app.get('/game', (req, res)=>{
-    // let { name, room } = req.body;
-    session.user = req.params.user;
-    session.room = req.params.room;
-    res.render('game.ejs', {user:session.user, room:session.room});
+app.get('/game/:room/:username', (req, res) => {
+    const { room, username } = req.params; // Az URL paramétereinek kiolvasása
+    res.render('game.ejs', { room, name: username }); // A változók átadása az EJS-nek
 });
+
+
 app.get('/board', (req, res)=>{
     // let { name, room } = req.body;
     session.user = req.params.user;
     session.room = req.params.room;
     res.render('board.ejs', {user:session.user, room:session.room});
 });
+
+
+
 
 app.get('/win', (req, res)=>{
     // let { name, room } = req.body;

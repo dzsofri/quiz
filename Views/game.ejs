@@ -1,7 +1,8 @@
 <%- include('header') %>
 
 <div class="card">
-    <h3>Üdvözlünk a kvízben, <%- user %>!</h3>
+    <h3>Üdvözlünk a kvízben, <%- name %>!</h3> <!-- A name változó megjelenítése -->
+    <p>Szoba neve: <%- room %></p> <!-- A room változó megjelenítése -->
 
     <!-- Kérdés megjelenítése -->
     <div class="mt-4">
@@ -9,7 +10,6 @@
             A kérdés szövege itt fog megjelenni...
         </h4>
     </div>
-    
 
     <!-- Válaszlehetőségek -->
     <div class="mt-4">
@@ -27,6 +27,7 @@
         <button class="btn" id="submitAnswerBtn" style="background: linear-gradient(90deg, #007bff, #0056b3); color: #ffffff;">Beküld</button>
     </div>
     
+    <!-- Kilépés -->
     <div class="mt-4 text-center">
         <a href="/" class="btn btn-danger" id="exitQuizBtn" style="padding: 10px 20px; font-weight: bold;">Kilépés a kvízből</a>
     </div>

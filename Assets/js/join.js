@@ -16,14 +16,14 @@ joinBtn.addEventListener('click', ()=>{
         return
     }
 
-    let username = nameField.value;
+    let name = nameField.value;
     let room = roomField.value;
     
     if (roomsSelect.value != ''){
         room = roomsSelect.value;
     }
 
-    document.location.href = `/game/${room}/${username}`;
+    document.location.href = `/game/${room}/${name}`;
 
 });
 
