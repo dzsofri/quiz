@@ -11,7 +11,7 @@ io.on('connection', (socket) => {
         console.log(`${socket.id} válasza: ${answer}`);
         
         // Válasz ellenőrzése
-        if (answer.toLowerCase() === 'budapest') {
+        if (answer.toLowerCase() === "vau") {
             socket.emit('answerFeedback', 'Helyes válasz!');
         } else {
             socket.emit('answerFeedback', 'Helytelen válasz, próbáld újra!');
