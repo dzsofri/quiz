@@ -18,4 +18,15 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/game', (req, res) => {
+    ejs.renderFile('./views/game.ejs', { session: req.session }, (err, html) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        
+        res.send(html);
+    });
+});
+
 module.exports = router;

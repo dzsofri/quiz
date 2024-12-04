@@ -10,7 +10,7 @@ var session = require('express-session');
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-const coreRoutes = require('./modules/core');
+const coreRoutes = require('./Modules/core');
 app.use('/', coreRoutes);
 
 const port = process.env.PORT;
