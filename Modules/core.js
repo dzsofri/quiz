@@ -18,6 +18,7 @@ router.get('/', (req, res) => {
     });
 });
 
+
 app.get('/win', (req, res)=>{
    
     ejs.renderFile('./views/win.ejs', { session: req.session }, (err, html) => {
@@ -31,17 +32,23 @@ app.get('/win', (req, res)=>{
     
 });
 
-app.get('/game', (req, res)=>{
-   
+
+router.get('/game', (req, res) => {
+
     ejs.renderFile('./views/game.ejs', { session: req.session }, (err, html) => {
         if (err) {
             console.error(err);
             return;
         }
+
         req.session.msg = '';
         res.send(html);
     });
     
+
+        
+        
+
 });
 
 module.exports = router;
