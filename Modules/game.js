@@ -1,5 +1,16 @@
 const io = require('socket.io')(server);
 
+socket.on('updatePlayerList', (players) => {
+    const playerListElement = document.querySelector('#playerList');
+    playerListElement.innerHTML = ''; // Lista ürítése
+    players.forEach(player => {
+        const listItem = document.createElement('li');
+        listItem.textContent = player;
+        playerListElement.appendChild(listItem);
+    });
+});
+
+
 io.on('connection', (socket) => {
     console.log('Egy felhasználó csatlakozott:', socket.id);
 
