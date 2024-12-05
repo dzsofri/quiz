@@ -37,7 +37,10 @@ app.get('/board', (req, res)=>{
     session.room = req.params.room;
     res.render('board.ejs', {user:session.user, room:session.room});
 });
-
+app.get('/win', (req, res)=>{
+   
+    res.render('win.ejs');
+});
 
 
 server.listen(port, ()=>{
