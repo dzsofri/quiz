@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const coreRoutes = require('./Modules/core');
+const coreRoutes = require('./Assets/core');
 app.use('/', coreRoutes);
 
 // Szerver és Socket.IO beállítások
@@ -68,28 +68,38 @@ app.get('/board', (req, res) => {
 io.on('connection', (socket) => {
     console.log('Egy felhasználó csatlakozott:', socket.id);
 
-    // Véletlenszerű kérdés lekérése az adatbázisból
-    pool.query('SELECT * FROM questions ORDER BY RAND() LIMIT 1', (err, results) => {
-        if (err) {
-            console.error('Hiba a kérdés lekérésekor:', err);
-            socket.emit('newQuestion', 'Hiba történt a kérdés betöltése közben.');
-            return;
-        }
+    // Függvény a véletlenszerű kérdés lekérésére
+    const getNewQuestion = () => {
+        pool.query('SELECT * FROM questions ORDER BY RAND() LIMIT 1', (err, results) => {
+            if (err) {
+                console.error('Hiba a kérdés lekérésekor:', err);
+                socket.emit('newQuestion', 'Hiba történt a kérdés betöltése közben.');
+                return;
+            }
 
-        if (results.length > 0) {
-            // Ha van kérdés, elküldjük
-            const question = results[0].question;
-            socket.emit('newQuestion', question);
-        } else {
-            socket.emit('newQuestion', 'Nincs elérhető kérdés.');
-        }
-    });
+            if (results.length > 0) {
+                // Kérdés elküldése a kliensnek
+                const question = results[0].question;
+                socket.emit('newQuestion', question);
+            } else {
+                socket.emit('newQuestion', 'Nincs elérhető kérdés.');
+            }
+        });
+    };
 
-    // Kilépés a kvízből
+    // Az első kérdés elküldése azonnal
+    getNewQuestion();
+
+    // 5 másodpercenként új kérdés lekérése
+    const intervalId = setInterval(getNewQuestion, 10000);
+
+    // Felhasználó lecsatlakozása esetén az időzítő törlése
     socket.on('disconnect', () => {
         console.log('Egy felhasználó kilépett:', socket.id);
+        clearInterval(intervalId);
     });
 });
+
 
 // Szerver indítása
 const port = process.env.PORT || 3000;
