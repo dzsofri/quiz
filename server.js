@@ -12,6 +12,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const coreRoutes = require('./Assets/core');
+
+
 app.use('/', coreRoutes);
 
 // Szerver és Socket.IO beállítások

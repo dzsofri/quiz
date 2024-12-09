@@ -1,4 +1,3 @@
-require('dotenv').config();
 const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
@@ -121,9 +120,3 @@ io.on('connection', (socket) => {
     socket.on('answerFeedback', (feedback) => {
         alert(feedback);
     });
-
-// Szerver indítása
-const port = process.env.PORT || 3000;
-server.listen(port, () => {
-    console.log(`Server listening on http://localhost:${port}`);
-});
